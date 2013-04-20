@@ -1,31 +1,12 @@
 package controllers
 
-import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json
+import scala.io.Source
 
 object Application extends Controller {
   
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    Ok(views.html.index())
   }
-
-  def emails = Action {
-    val json = Json.obj(
-      "users" -> Json.arr(
-        Json.obj(
-          "name" -> "bob",
-          "age" -> 31,
-          "email" -> "bob@gmail.com"      
-        ),
-        Json.obj(
-          "name" -> "kiki",
-          "age" -> 25,
-          "email" -> "kiki@gmail.com"     
-        ) 
-      )
-    )
-    Ok(json).as("application/json")
-  }
-  
 }
