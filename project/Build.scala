@@ -13,11 +13,11 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     jdbc,
-    "com.typesafe.play" %% "play-slick" % "0.3.2"
+    "com.typesafe.play" %% "play-slick" % "0.3.2",
+    "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.1.3"
   )
   
   val localSettings = lintSettings ++ inConfig(Compile)(Seq(
-    // jslint
     sourceDirectory in jslint <<= (baseDirectory)(_ / "app/assets/javascripts"),
     excludeFilter in jslint := "generated" || "lib",
     flags in jslint := Seq("sloppy", "continue", "vars", "nomen")
@@ -26,9 +26,6 @@ object ApplicationBuild extends Build {
   val main = play.Project(appName, appVersion, appDependencies)
     .settings(jasmineSettings : _*)
     .settings(localSettings : _*)
-    .settings(
-      routesImport += "se.radley.plugin.salat.Binders._",
-      templatesImport += "org.bson.types.ObjectId")
     .settings(
       appJsDir <+= baseDirectory / "app/assets/javascripts",
       appJsLibDir <+= baseDirectory / "public/javascripts/lib",

@@ -1,18 +1,26 @@
 package controllers
 
 import play.api.mvc._
-//import net.liftweb.json._
-//import net.liftweb.json.Serialization.write
-//import models.Patient
-//import play.api.mvc.BodyParsers.parse
-//import parse._
+import models.{Patients, Patient}
+
+import play.api.libs.json.Json._
 
 object Patients extends Controller {
 
-//  implicit val formats = Serialization.formats(NoTypeHints)
+  implicit val patientsToJson = format[Patient]
+  implicit val jsonToPatient = writes[Patient]
 
-//  def patients = Action {
-//    val patientsAsJson = write(Patient(Some(1), "Dom", 23))
-//    Ok(patientsAsJson).as("application/json")
-//  }
+  def all = Action { request =>
+    Ok(toJson(models.Patients.findAll))
+  }
+
+  def insert = Action { request =>
+//    val blah = parse(request.body.asText.get).as[Patient]
+//    println(blah)
+    val user = request.body.asJson.map(_.as[Patient]).getOrElse(
+      throw new RuntimeException("could not create user")
+    )
+
+    Ok(toJson(models.Patients.findAll))
+  }
 }

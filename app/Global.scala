@@ -1,4 +1,3 @@
-import models.Patients
 import play.api.db.DB
 import play.api.GlobalSettings
 import scala.slick.driver.H2Driver.simple._
