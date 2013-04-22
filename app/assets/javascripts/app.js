@@ -1,7 +1,9 @@
-angular.module('phonecat', ['phonecatFilters', 'phonecatServices', '$strap.directives']).
+angular.module('someShit', ['someShitServices', '$strap.directives']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-      when('/phones', {templateUrl: '/assets/partials/phone_list.html',   controller: PhoneListCtrl}).
-      when('/phones/:phoneId', {templateUrl: 'assets/partials/phone_detail.html', controller: PhoneDetailCtrl}).
-      otherwise({redirectTo: '/phones'});
+      when('/dashboard', {templateUrl: '/assets/views/dashboard.html',   controller: DashboardCtrl}).
+
+      when('/patients', {templateUrl: 'assets/views/patients.html',   controller: PatientListCtrl}).
+      when('/patients/:patientId', {templateUrl: 'assets/views/partials/patient_detail.html', controller: PatientDetailCtrl}).
+      otherwise({redirectTo: '/dashboard'});
 }]);

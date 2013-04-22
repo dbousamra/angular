@@ -1,6 +1,6 @@
-angular.module('phonecatServices', ['ngResource']).
-    factory('Phone', function($resource){
-  return $resource('assets/phones/:phoneId.json', {}, {
-    query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+angular.module('someShitServices', ['ngResource']).
+    factory('Patient', function($resource){
+  return $resource('assets/patients/:patientId.json', {}, {
+    query: {method:'GET', params:{patientId:'patients'}, isArray:true}
   });
 });

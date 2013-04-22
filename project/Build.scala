@@ -13,9 +13,9 @@ object ApplicationBuild extends Build {
 
   val appDependencies = Seq(
     jdbc,
-    anorm
+    "com.typesafe.play" %% "play-slick" % "0.3.2"
   )
-
+  
   val localSettings = lintSettings ++ inConfig(Compile)(Seq(
     // jslint
     sourceDirectory in jslint <<= (baseDirectory)(_ / "app/assets/javascripts"),
@@ -27,15 +27,12 @@ object ApplicationBuild extends Build {
     .settings(jasmineSettings : _*)
     .settings(localSettings : _*)
     .settings(
-    // Add your own project settings here
-
-    // jasmine configuration, overridden as we don't follow the default project structure sbt-jasmine expects
-    appJsDir <+= baseDirectory / "app/assets/javascripts",
-    appJsLibDir <+= baseDirectory / "public/javascripts/lib",
-    jasmineTestDir <+= baseDirectory / "test/assets/",
-    jasmineConfFile <+= baseDirectory / "test/assets/test.dependencies.js"
-    // link jasmine to the standard 'sbt test' action. Now when running 'test' jasmine tests will be run, and if they pass
-    // then other Play tests will be executed.
-//    (test in Test) <<= (test in Test) dependsOn (jasmine)
+      routesImport += "se.radley.plugin.salat.Binders._",
+      templatesImport += "org.bson.types.ObjectId")
+    .settings(
+      appJsDir <+= baseDirectory / "app/assets/javascripts",
+      appJsLibDir <+= baseDirectory / "public/javascripts/lib",
+      jasmineTestDir <+= baseDirectory / "test/assets/",
+      jasmineConfFile <+= baseDirectory / "test/assets/test.dependencies.js"
   )
 }

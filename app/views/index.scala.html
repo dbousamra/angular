@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="phonecat">
+<html lang="en" ng-app="someShit">
   <head>
     <title>Some Shit: {{query}}</title>
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <!-- LIB IMPORTS -->
     <script src="@routes.Assets.at("javascripts/lib/jquery-1.9.0.min.js")" type="text/javascript"></script>
     <script src="@routes.Assets.at("javascripts/lib/bootstrap.js")" type="text/javascript"></script>
     <script src="@routes.Assets.at("javascripts/lib/angular.min.js")" type="text/javascript"></script>
@@ -24,7 +25,7 @@
         <a class="navbar-brand" href="#">Some Shit</a>
         <ul class="nav">
           <!-- You can use regular expressions -->
-          <li data-match-route="/(:?navbar)"><a href="#/navbar">Overview</a></li>
+          <li data-match-route="/dashboard.*"><a href="#/dashboard">Overview</a></li>
           <li data-match-route="/phones.*"><a href="#/phones">Appointments</a></li>
           <li data-match-route="/patients.*"><a href="#/patients">Patients</a></li>
           <li data-match-route="/invoices.*"><a href="#/invoices">Invoices</a></li>

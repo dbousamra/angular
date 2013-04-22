@@ -1,11 +1,12 @@
-function PhoneListCtrl($scope, Phone) {
-  $scope.phones = Phone.query();
-  $scope.orderProp = 'age';
-}
-PhoneListCtrl.$inject = ['$scope', 'Phone'];
-
-function PhoneDetailCtrl($scope, $routeParams, Phone) {
-  $scope.phone = Phone.get({phoneId: $routeParams.phoneId});
+function DashboardCtrl($scope) {
+  $scope.title = 'Dom';
 }
 
-PhoneDetailCtrl.$inject = ['$scope', '$routeParams', 'Phone'];
+function PatientListCtrl($scope, Patient) {
+  $scope.patients = Patient.query();
+  $scope.orderProp = 'name';
+}
+
+function PatientDetailCtrl($scope, $routeParams, Patient) {
+  $scope.patient = Patient.get({patientId: $routeParams.patientId});
+}
