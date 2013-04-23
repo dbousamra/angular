@@ -3,6 +3,8 @@
 # ~~~~
 
 GET     /patients                   controllers.Patients.all
+POST    /patients                   controllers.Patients.save
+GET     /patients/:id               controllers.Patients.show(id: Long)
 GET     /                           controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path

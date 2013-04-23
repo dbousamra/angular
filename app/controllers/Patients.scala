@@ -14,13 +14,17 @@ object Patients extends Controller {
     Ok(toJson(models.Patients.findAll))
   }
 
-  def insert = Action { request =>
-//    val blah = parse(request.body.asText.get).as[Patient]
-//    println(blah)
-    val user = request.body.asJson.map(_.as[Patient]).getOrElse(
+  def show(id: Long) = Action { request =>
+    Ok(toJson(models.Patients.findById(id)))
+  }
+
+  def save = Action { request =>
+    println(request.body.asJson)
+    println(toJson(Patient(None, "Dom", 23)))
+    val patientFromForm = request.body.asJson.map(_.as[Patient]).getOrElse(
       throw new RuntimeException("could not create user")
     )
-
+    println(patientFromForm)
     Ok(toJson(models.Patients.findAll))
   }
 }
