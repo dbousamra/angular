@@ -8,14 +8,16 @@ import java.sql.Date
 case class Patient(id: Option[Long] = None,
                    firstName: String,
                    lastName: String,
+                   gender: String,
                    dateOfBirth: Date)
 
 object Patients extends Table[Patient]("patient") {
    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
    def firstName = column[String]("firstName")
    def lastName = column[String]("lastName")
+   def gender = column[String]("gender")
    def dateOfBirth = column[Date]("dateOfBirth")
-   def * = id.? ~ firstName ~ lastName ~ dateOfBirth <>(Patient, Patient.unapply _)
+   def * = id.? ~ firstName ~ lastName ~ gender ~ dateOfBirth <>(Patient, Patient.unapply _)
    def autoInc = * returning id
    val byId = createFinderBy(_.id)
 

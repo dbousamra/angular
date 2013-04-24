@@ -32,6 +32,18 @@
           <input type="text" id="patient.lastName" ng-model="patient.lastName" required />
         </div>
       </div>
+
+      <div class="control-group">
+        <label class="control-label" for="patient.gender">Gender</label>
+        <div class="controls">
+          <select id="patient.gender" ng-model="patient.gender" required>
+            <option ng-selected="Male" value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+
+        </div>
+      </div>
+
       <div class="control-group">
         <label class="control-label" for="patient.dateOfBirth">Date of birth</label>
         <div class="controls">

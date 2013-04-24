@@ -1,4 +1,4 @@
 <div class="page-header">
   <h1>{{patient.firstName + ' ' + patient.lastName}}</h1>
-  <p class="lead">{{patient.age}} years old.</p>
+  <p class="lead">{{patient.dateOfBirth | yearsOld}}, {{patient.gender}}</p>
 </div>

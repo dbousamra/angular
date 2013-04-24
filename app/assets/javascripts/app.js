@@ -1,4 +1,4 @@
-var app = angular.module('someShit', ['someShitServices', '$strap.directives']).
+var app = angular.module('someShit', ['someShitServices', '$strap.directives', 'someShitFilters']).
   config(['$routeProvider', function($routeProvider) {
     var base = "assets/views/";
     $routeProvider.
