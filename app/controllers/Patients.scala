@@ -23,7 +23,6 @@ object Patients extends Controller {
     request.body.validate[Patient].map {
       case patient => {
         val id = models.Patients.add(patient);
-        println(toJson(id))
         Ok(toJson(id))
       }
     }.recoverTotal{
