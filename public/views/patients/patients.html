@@ -11,14 +11,14 @@
 <table class="patients table">
   <thead>
     <tr>
-      <th>First Name</th>
+      <th>Name</th>
       <th>Age</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="patient in patients | filter:query">
-      <td><a href="#/patients/{{patient.id}}">{{patient.name}}</a></td>
-      <td>{{patient.age}}</td>
+      <td><a href="#/patients/{{patient.id}}">{{patient.firstName + ' ' + patient.lastName}}</a></td>
+      <td>{{patient.dateOfBirth}}</td>
     </tr>
   </tbody>
 </table>

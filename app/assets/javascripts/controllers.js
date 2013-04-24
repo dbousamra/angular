@@ -11,19 +11,17 @@ function PatientDetailCtrl($scope, $routeParams, Patient) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
 }
 
-function PatientAddCtrl($scope, $routeParams, Patient) {
-  $scope.patientDetails = {};
+function PatientAddCtrl($scope, $routeParams, $location, Patient) {
+  $scope.save = function () {
+    Patient.save($scope.patient, function (data) {
+      $location.path('/patients/' + data.id);
 
-  $scope.save = function() {
-//    Patient.save($scope.patient);
-      Patient.save($scope.patient, function(data) {
-        alert("Success")
-      }, function(error) {
-        alert("Error");
-      });
+    }, function (error) {
+      $scope.invalidUsernamePassword = true;
+    });
   };
 
-  $scope.reset = function() {
+  $scope.reset = function () {
     $scope.patient = {};
   };
 

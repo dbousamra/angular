@@ -1,9 +1,10 @@
 package controllers
 
 import play.api.mvc._
-import models.{Patients, Patient}
+import models.Patient
 
 import play.api.libs.json.Json._
+import play.api.libs.json.JsError
 
 object Patients extends Controller {
 
@@ -14,17 +15,19 @@ object Patients extends Controller {
     Ok(toJson(models.Patients.findAll))
   }
 
-  def show(id: Long) = Action { request =>
+  def show(id: Long) = Action  { request =>
     Ok(toJson(models.Patients.findById(id)))
   }
 
-  def save = Action { request =>
-    println(request.body.asJson)
-    println(toJson(Patient(None, "Dom", 23)))
-    val patientFromForm = request.body.asJson.map(_.as[Patient]).getOrElse(
-      throw new RuntimeException("could not create user")
-    )
-    println(patientFromForm)
-    Ok(toJson(models.Patients.findAll))
+  def save = Action(parse.json) { request =>
+    request.body.validate[Patient].map {
+      case patient => {
+        val id = models.Patients.add(patient);
+        println(toJson(id))
+        Ok(toJson(id))
+      }
+    }.recoverTotal{
+      e => BadRequest(JsError.toFlatJson(e))
+    }
   }
 }

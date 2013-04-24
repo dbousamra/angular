@@ -1,15 +1,51 @@
 <div class="page-header">
   <h1>Add a new patient.</h1>
+
   <p class="lead">Complete the fields below to add a new patient.</p>
 </div>
+<script type="text/javascript">
+  app.value('$strap.config', {
+  datepicker: {
+    language: 'fr',
+    format: 'M d, yyyy'
+  }
+});
+
+</script>
 
 <div ng-controller="PatientAddCtrl">
-  <form novalidate class="simple-form">
-    Name: <input type="text" ng-model="patient.name" /><br />
-    Age: <input type="text" ng-model="patient.age" /><br />
-    <button ng-click="reset()">RESET</button>
-    <button ng-click="save(patient)">SAVE</button>
-  </form>
+  <div ng-show="invalidUsernamePassword">
+    <span>Invalid username or password</span>
+  </div>
+  <div class="row">
+  <div class="col-span-6">
+    <form name="patientForm" novalidate class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="patient.firstName">First name</label>
+        <div class="controls">
+          <input type="text" id="patient.firstName" ng-model="patient.firstName" required />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="patient.lastName">Last name</label>
+        <div class="controls">
+          <input type="text" id="patient.lastName" ng-model="patient.lastName" required />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="patient.dateOfBirth">Date of birth</label>
+        <div class="controls">
+          <input type="text" id="patient.dateOfBirth" data-date-format="dd/mm/yyyy" ng-model="patient.dateOfBirth" data-date-format="dd/mm/yyyy" bs-datepicker>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <button class="btn" ng-click="reset()">Reset</button>
+          <button class="btn btn-primary" ng-click="save(patient)" ng-disabled="patientForm.$invalid" >Save</button>
+        </div>
+      </div>
+    </form>
+  </div></div>
   <pre>form = {{patient | json}}</pre>
-  <pre>master = {{master | json}}</pre>
 </div>
