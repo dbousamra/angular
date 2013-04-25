@@ -2,3 +2,14 @@
   <h1>{{patient.firstName + ' ' + patient.lastName}}</h1>
   <p class="lead">{{patient.dateOfBirth | yearsOld}}, {{patient.gender}}</p>
 </div>
+
+
+<div>
+  <h3>Contact Details</h3>
+  <dl class="dl-horizontal">
+    <dt>Email:</dt>
+    <dd>{{patient.email}}</dd>
+    <dt>Phone:</dt>
+    <dd>{{patient.phone}}</dd>
+  </dl>
+</div>

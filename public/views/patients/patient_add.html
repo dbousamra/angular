@@ -21,20 +21,21 @@
     <div class="col-span-2">
       <ul class="list-group">
         <a href="#" class="list-group-item active" data-toggle="a" class-toggle="list-group-item active">Basic</a>
-        <a href="#" class="list-group-item">Medical</a>
+        <a href="#" class="list-group-item">Contact</a>
         <a href="#" class="list-group-item">Extra</a>
       </ul>
 
     </div>
     <div class="col-span-10">
-      <form name="patientForm" novalidate class="form-horizontal">
+      <form novalidate name="patientForm" class="form-horizontal">
         <div class="row">
           <div class="col-span-6">
             <fieldset>
               <legend>Basic Information</legend>
+
+
               <div class="control-group">
                 <label class="control-label" for="patient.firstName">First name</label>
-
                 <div class="controls">
                   <input type="text" id="patient.firstName" ng-model="patient.firstName" required/>
                 </div>
@@ -69,8 +70,31 @@
                 </div>
               </div>
             </fieldset>
+
+            <fieldset>
+              <legend>Contact Information</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="patient.phone">Phone</label>
+                <div class="controls">
+                  <input type="text" id="patient.phone" ng-model="patient.phone"/>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="patient.email">Email</label>
+                <div class="controls">
+                  <input type="email" id="patient.email" ng-model="patient.email"/>
+                  <span class="help-inline" ng-show="patientForm.$error.email"><p class="text-danger">Inline help text</p></span>
+                </div>
+              </div>
+            </fieldset>
+
+
           </div>
         </div>
+
+
         <div class="form-actions">
           <button class="btn" ng-click="reset()">Reset</button>
           <button class="btn btn-primary" ng-click="save(patient)" ng-disabled="patientForm.$invalid">Save</button>
@@ -78,4 +102,6 @@
       </form>
     </div>
   </div>
+
+  <pre>{{patient | json}}</pre>
 </div>
