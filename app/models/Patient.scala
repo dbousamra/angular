@@ -38,6 +38,11 @@ object Patients extends Table[Patient]("patient") {
      patient.copy(id = Some(insertedId))
    }
 
+  def update(patient: Patient) = DB.withSession { implicit session =>
+    val patientToUpdate = for { c <- Patients if c.id === patient.id.get } yield c
+    patientToUpdate.update(patient)
+  }
+
    def findAll = DB.withSession { implicit session =>
      (for { c <- Patients } yield c).list
    }

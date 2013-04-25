@@ -20,12 +20,21 @@ object Patients extends Controller {
   }
 
   def save = Action(parse.json) { request =>
-    println(request.body);
     request.body.validate[Patient].map {
       case patient => {
-        println(patient)
         val id = models.Patients.add(patient);
         Ok(toJson(id))
+      }
+    }.recoverTotal{
+      e => BadRequest(JsError.toFlatJson(e))
+    }
+  }
+
+  def update = Action(parse.json) { request =>
+    request.body.validate[Patient].map {
+      case patient => {
+        models.Patients.update(patient);
+        Ok(toJson(patient.id.get))
       }
     }.recoverTotal{
       e => BadRequest(JsError.toFlatJson(e))

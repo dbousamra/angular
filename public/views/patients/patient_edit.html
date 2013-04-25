@@ -1,7 +1,7 @@
 <div class="page-header">
-  <h1>Add a new patient.</h1>
+  <h1>Edit {{patient.firstName + ' ' + patient.lastName}}'s details</h1>
 
-  <p class="lead">Complete the fields below to add a new patient.</p>
+  <p class="lead">Edit the fields below, and click save when you're done.</p>
 </div>
 <script type="text/javascript">
   app.value('$strap.config', {
@@ -13,6 +13,6 @@
 
 </script>
 
-<div ng-controller="PatientAddCtrl">
+<div ng-controller="PatientEditCtrl">
   <div ng-include src="'/assets/views/patients/form.html'"></div>
 </div>
