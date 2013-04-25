@@ -1,33 +1,47 @@
 <div class="page-header">
   <h1>{{patient.firstName + ' ' + patient.lastName}}</h1>
+
   <p class="lead">{{patient.dateOfBirth | yearsOld}}, {{patient.gender}}</p>
 </div>
 
 <div class="row">
   <div class="col-span-9">
-    <h3>Contact Details</h3>
-    <dl class="dl-horizontal">
-      <dt>Email:</dt>
-      <dd>{{patient.email}}</dd>
-      <dt>Phone:</dt>
-      <dd>{{patient.phone}}</dd>
-    </dl>
-    <h3>Address Details</h3>
-    <dl class="dl-horizontal">
-      <dt>Email:</dt>
-      <dd>{{patient.email}}</dd>
-      <dt>Phone:</dt>
-      <dd>{{patient.phone}}</dd>
-    </dl>
-    <h3>Treatment Details</h3>
-    <dl class="dl-horizontal">
-      <dt>Email:</dt>
-      <dd>{{patient.email}}</dd>
-      <dt>Phone:</dt>
-      <dd>{{patient.phone}}</dd>
-    </dl>
+    <div data-fade="1" ngModel="activeTab" bs-tabs>
+      <div data-title="Patient Information">
+        <h3>Basic Information</h3>
+        <dl class="dl-horizontal smaller">
+          <dt>Email:</dt>
+          <dd>{{patient.email | notAvailable}}</dd>
+          <dt>Phone:</dt>
+          <dd>{{patient.phone | notAvailable}}</dd>
+          <dt>Address:</dt>
+          <dd>{{patient.address1 | notAvailable}}</dd>
+          <dt>Postcode:</dt>
+          <dd>{{patient.postcode | notAvailable}}</dd>
+        </dl>
+
+        <h3>Billing Information</h3>
+        <dl class="dl-horizontal smaller">
+          <dt>Medicare Number:</dt>
+          <dd>{{patient.medicareNumber | notAvailable}}</dd>
+          <dt>Health fund provider:</dt>
+          <dd>{{patient.healthFund | notAvailable}}</dd>
+          <dt>Reference Number:</dt>
+          <dd>{{patient.refNumber | notAvailable}}</dd>
+          <dt>Postcode:</dt>
+          <dd>{{patient.postcode | notAvailable}}</dd>
+        </dl>
+      </div>
+      <div data-title="History">
+        <p>Some stuff2</p>
+      </div>
+      <div data-title="Other">
+        <p>Some stuff3</p>
+      </div>
+    </div>
+
   </div>
   <div class="col-span-3">
-    <img src="http://coenraets.org/directory/pics/John_Williams.jpg" />
+    <img src="http://coenraets.org/directory/pics/John_Williams.jpg"/>
   </div>
 </div>

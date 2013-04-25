@@ -37,14 +37,14 @@
               <div class="control-group">
                 <label class="control-label" for="patient.firstName">First name</label>
                 <div class="controls">
-                  <input type="text" id="patient.firstName" ng-model="patient.firstName" required/>
+                  <input type="text" id="patient.firstName" ng-model="patient.firstName" placeholder="Tyrion" required/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label" for="patient.lastName">Last name</label>
 
                 <div class="controls">
-                  <input type="text" id="patient.lastName" ng-model="patient.lastName" required/>
+                  <input type="text" id="patient.lastName" ng-model="patient.lastName" placeholder="Lannister" required/>
                 </div>
               </div>
 
@@ -52,11 +52,18 @@
                 <label class="control-label" for="patient.gender">Gender</label>
 
                 <div class="controls">
-                  <select id="patient.gender" ng-model="patient.gender" required>
-                    <option ng-selected="Male" value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
-
+                  <div id="patient.gender" class="radio">
+                    <label>
+                      <input type="radio" name="patient.gender" ng-model="patient.gender" value="Female" checked>
+                      Male
+                    </label>
+                  </div>
+                  <div id="patient.gender" class="radio">
+                    <label>
+                      <input type="radio" name="patient.gender" ng-model="patient.gender" value="Male">
+                      Female
+                    </label>
+                  </div>
                 </div>
               </div>
 
@@ -66,7 +73,7 @@
                 <div class="controls">
                   <input type="text" id="patient.dateOfBirth" data-date-format="dd/mm/yyyy"
                          ng-model="patient.dateOfBirth"
-                         data-date-format="dd/mm/yyyy" bs-datepicker required>
+                         data-date-format="dd/mm/yyyy" bs-datepicker required placeholder="22/01/1990">
                 </div>
               </div>
             </fieldset>
@@ -77,15 +84,33 @@
               <div class="control-group">
                 <label class="control-label" for="patient.phone">Phone</label>
                 <div class="controls">
-                  <input type="text" id="patient.phone" ng-model="patient.phone"/>
+                  <input type="text" id="patient.phone" ng-model="patient.phone" placeholder="0414213852"/>
                 </div>
               </div>
 
               <div class="control-group">
                 <label class="control-label" for="patient.email">Email</label>
                 <div class="controls">
-                  <input type="email" id="patient.email" ng-model="patient.email"/>
+                  <input type="email" id="patient.email" ng-model="patient.email" placeholder="tyrion.lannister@gmail.com"/>
                   <span class="help-inline" ng-show="patientForm.$error.email"><p class="text-danger">Inline help text</p></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Address Information</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="patient.address1">Address 1</label>
+                <div class="controls">
+                  <input type="text" id="patient.address1" ng-model="patient.address1" placeholder="The Hand of the King's Solar"/>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="patient.postcode">Postcode</label>
+                <div class="controls">
+                  <input type="text" id="patient.postcode" ng-model="patient.postcode" placeholder="4217"/>
                 </div>
               </div>
             </fieldset>

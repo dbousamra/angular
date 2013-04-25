@@ -1,4 +1,4 @@
-var app = angular.module('someShit', ['someShitServices', '$strap.directives', 'someShitFilters']);
+var app = angular.module('someShit', ['someShitServices', '$strap.directives', 'someShitFilters', 'someShitDirectives']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     var base = "/assets/views/";
     $locationProvider.html5Mode(true);

@@ -1,10 +1,6 @@
 @red: #b94a48;
 @grey: #f5f5f5;
 
-html, body {
-  padding-top: 30px;
-}
-
 .red-headings {
   color: @red;
   border-color: @red
@@ -23,4 +19,10 @@ html, body {
 
 .page-header {
   .red-headings
+}
+
+.dl-horizontal > dd:after {
+  display: table;
+  content: "";
+  clear: both;
 }

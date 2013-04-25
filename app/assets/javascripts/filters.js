@@ -8,4 +8,9 @@ angular.module('someShitFilters', [])
     return function(input) {
       return moment(input).format("DD/MM/YYYY");
     };
+  })
+  .filter('notAvailable', function() {
+    return function(input) {
+      return input || "N/A";
+    };
   });

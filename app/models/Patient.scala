@@ -11,7 +11,9 @@ case class Patient(id: Option[Long] = None,
                    gender: String,
                    dateOfBirth: Date,
                    phone: Option[String],
-                   email: Option[String])
+                   email: Option[String],
+                   address1: Option[String],
+                   postcode: Option[String])
 
 object Patients extends Table[Patient]("patient") {
    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
@@ -21,7 +23,13 @@ object Patients extends Table[Patient]("patient") {
    def dateOfBirth = column[Date]("dateOfBirth")
    def phone = column[String]("phone", O.Nullable)
    def email = column[String]("email", O.Nullable)
-   def * = id.? ~ firstName ~ lastName ~ gender ~ dateOfBirth ~ phone.? ~ email.? <>(Patient, Patient.unapply _)
+   def address1= column[String]("address1", O.Nullable)
+   def postcode = column[String]("postcode", O.Nullable)
+
+
+
+
+   def * = id.? ~ firstName ~ lastName ~ gender ~ dateOfBirth ~ phone.? ~ email.? ~ address1.? ~ postcode.? <>(Patient, Patient.unapply _)
    def autoInc = * returning id
    val byId = createFinderBy(_.id)
 
