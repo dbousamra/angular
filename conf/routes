@@ -5,6 +5,9 @@
 GET     /patients                   controllers.Patients.all
 POST    /patients                   controllers.Patients.save
 GET     /patients/:id               controllers.Patients.show(id: Long)
+GET     /app/*name                  controllers.Application.all(name)
+GET     /app/                       controllers.Application.index
+GET     /app                        controllers.Application.index
 GET     /                           controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path

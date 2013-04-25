@@ -1,10 +1,11 @@
-var app = angular.module('someShit', ['someShitServices', '$strap.directives', 'someShitFilters']).
-  config(['$routeProvider', function($routeProvider) {
-    var base = "assets/views/";
+var app = angular.module('someShit', ['someShitServices', '$strap.directives', 'someShitFilters']);
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    var base = "/assets/views/";
+    $locationProvider.html5Mode(true);
     $routeProvider.
-        when('/dashboard', {templateUrl: '/assets/views/dashboard.html',   controller: DashboardCtrl}).
-        when('/patients/add', {templateUrl: base + 'patients/patient_add.html', controller: PatientAddCtrl}).
-        when('/patients/:patientId', {templateUrl: base + 'patients/patient_detail.html', controller: PatientDetailCtrl}).
-        when('/patients', {templateUrl: base + 'patients/patients.html',   controller: PatientListCtrl}).
-        otherwise({redirectTo: '/dashboard'});
+        when('/app/dashboard', {templateUrl: base + 'dashboard.html',   controller: DashboardCtrl}).
+        when('/app/patients/add', {templateUrl: base + 'patients/patient_add.html', controller: PatientAddCtrl}).
+        when('/app/patients/:patientId', {templateUrl: base + 'patients/patient_detail.html', controller: PatientDetailCtrl}).
+        when('/app/patients', {templateUrl: base + 'patients/patients.html',   controller: PatientListCtrl}).
+        otherwise({redirectTo: '/app/dashboard'});
 }]);

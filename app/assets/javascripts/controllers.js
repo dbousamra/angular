@@ -11,10 +11,16 @@ function PatientDetailCtrl($scope, $routeParams, Patient) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
 }
 
-function PatientAddCtrl($scope, $routeParams, $location, Patient) {
+function PatientAddCtrl($scope, $location, Patient, $anchorScroll) {
+
+  $scope.scrollTo = function(id) {
+    $location.hash(id);
+    $anchorScroll();
+  };
+
   $scope.save = function () {
     Patient.save($scope.patient, function (data) {
-      $location.path('/patients/' + data.id);
+      $location.path('/app/patients/' + data.id);
 
     }, function (error) {
       $scope.invalidUsernamePassword = true;

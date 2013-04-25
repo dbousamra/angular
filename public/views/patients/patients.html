@@ -5,7 +5,7 @@
 
 <div class="row">
   <input type="text" class="input col-span-4 pull-left" placeholder="Search by name..." ng-model="query">
-  <a class="btn btn-primary pull-right" href="#/patients/add">Add a new patient</a>
+  <a class="btn btn-primary pull-right" href="patients/add">Add a new patient</a>
 </div>
 
 <table class="patients table">
@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="patient in patients | filter:query">
-      <td><a href="#/patients/{{patient.id}}">{{patient.firstName + ' ' + patient.lastName}}</a></td>
+      <td><a href="/app/patients/{{patient.id}}">{{patient.firstName + ' ' + patient.lastName}}</a></td>
       <td>{{patient.gender}}</td>
       <td>{{patient.dateOfBirth | pretty}}</td>
     </tr>
