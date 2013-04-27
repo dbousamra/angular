@@ -21,13 +21,8 @@ function PatientArchiveCtrl($scope, $routeParams, $location, Patient) {
   };
 }
 
-function PatientEditCtrl($scope, $routeParams, $location, Patient, $anchorScroll) {
+function PatientEditCtrl($scope, $routeParams, $location, Patient) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
-  $scope.scrollTo = function(id) {
-    $location.hash(id);
-    $anchorScroll();
-  };
-
   $scope.save = function () {
     Patient.update($scope.patient, function (success) {
       $location.path('/app/patients/' + $scope.patient.id);
@@ -37,12 +32,7 @@ function PatientEditCtrl($scope, $routeParams, $location, Patient, $anchorScroll
   };
 }
 
-function PatientAddCtrl($scope, $location, Patient, $anchorScroll) {
-  $scope.scrollTo = function(id) {
-    $location.hash(id);
-    $anchorScroll();
-  };
-
+function PatientAddCtrl($scope, $location, Patient) {
   $scope.save = function () {
     Patient.save($scope.patient, function (data) {
       $location.path('/app/patients/' + data.id);

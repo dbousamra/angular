@@ -5,7 +5,7 @@
 GET     /patients                   controllers.Patients.all
 POST    /patients                   controllers.Patients.save
 PUT     /patients                   controllers.Patients.update
-DELETE  /patients                   controllers.Patients.archive
+DELETE  /patients/:id               controllers.Patients.archive(id: Long)
 GET     /patients/:id               controllers.Patients.show(id: Long)
 GET     /app/*name                  controllers.Application.all(name)
 GET     /app/                       controllers.Application.index

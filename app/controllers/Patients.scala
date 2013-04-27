@@ -41,11 +41,13 @@ object Patients extends Controller {
     }
   }
 
-  def archive = Action(parse.json) { request =>
+  def archive(id: Long) = Action(parse.json) { request =>
+    println("Archived")
+
     request.body.validate[Patient].map {
       case patient => {
         println("Archived")
-        models.Patients.archive(patient);
+//        models.Patients.archive(patient);
         Ok(toJson(patient.id.get))
       }
     }.recoverTotal{

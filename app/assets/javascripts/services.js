@@ -1,5 +1,6 @@
-angular.module('someShitServices', ['ngResource'])
-  .factory('Patient', function($resource){
+var servicesModule = angular.module('angularServices', ['ngResource'])
+
+servicesModule.factory('Patient', function($resource){
     return $resource('/patients/:patientId', {}, {
       query: {method: 'GET', params:{patientId: ''}, isArray:true},
       save:  {method: 'POST'},
@@ -8,3 +9,6 @@ angular.module('someShitServices', ['ngResource'])
     });
   }
 );
+
+
+
