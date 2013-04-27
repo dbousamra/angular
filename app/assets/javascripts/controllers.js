@@ -7,8 +7,8 @@ function PatientListCtrl($scope, Patient) {
 
 function PatientDetailCtrl($scope, $routeParams, $location, Patient) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
-  $scope.toggleArchive = function(archived) {
-    $scope.patient.archived = archived;
+  $scope.toggleArchive = function() {
+    $scope.patient.archived = !$scope.patient.archived;
     Patient.update($scope.patient, function (success) {
       $location.path('/app/patients/' + $scope.patient.id);
     });
