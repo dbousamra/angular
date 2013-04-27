@@ -33,19 +33,13 @@ object Patients extends Controller {
   def update = Action(parse.json) { request =>
     request.body.validate[Patient].map {
       case patient => {
-        models.Patients.update(patient);
-        Ok(toJson(patient.id.get))
+        models.Patients.update(patient) match {
+          case 0 => BadRequest(s"Could not update Patient with id: ${patient.id}")
+          case _ => Ok(toJson(patient.id.get))
+        }
       }
     }.recoverTotal{
       e => BadRequest(JsError.toFlatJson(e))
-    }
-  }
-
-  def archive(id: Long) = Action { request =>
-    val patientToArchive = models.Patients.findById(id)
-    models.Patients.archive(id) match {
-      case 0 => BadRequest(s"Could not update Patient with id: ${id}")
-      case _ => Ok(toJson(patientToArchive))
     }
   }
 }
