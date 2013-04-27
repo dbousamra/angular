@@ -9,6 +9,18 @@ function PatientDetailCtrl($scope, $routeParams, Patient) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
 }
 
+function PatientArchiveCtrl($scope, $routeParams, $location, Patient) {
+  $scope.patient = Patient.get({patientId: $routeParams.patientId});
+
+  $scope.archive = function () {
+    Patient.archive($scope.patient, function (success) {
+      $location.path('/app/patients/' + $scope.patient.id);
+    }, function (error) {
+      $scope.invalidUsernamePassword = true;
+    });
+  };
+}
+
 function PatientEditCtrl($scope, $routeParams, $location, Patient, $anchorScroll) {
   $scope.patient = Patient.get({patientId: $routeParams.patientId});
   $scope.scrollTo = function(id) {
@@ -18,7 +30,6 @@ function PatientEditCtrl($scope, $routeParams, $location, Patient, $anchorScroll
 
   $scope.save = function () {
     Patient.update($scope.patient, function (success) {
-      console.log("HELLO");
       $location.path('/app/patients/' + $scope.patient.id);
     }, function (error) {
       $scope.invalidUsernamePassword = true;

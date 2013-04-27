@@ -3,7 +3,8 @@ angular.module('someShitServices', ['ngResource'])
     return $resource('/patients/:patientId', {}, {
       query: {method: 'GET', params:{patientId: ''}, isArray:true},
       save:  {method: 'POST'},
-      update: {method:'PUT'}
+      update: {method:'PUT'},
+      archive: {method: 'DELETE'}
     });
   }
 );

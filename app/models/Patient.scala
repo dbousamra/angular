@@ -6,17 +6,19 @@ import play.api.Play.current
 import java.sql.Date
 
 case class Patient(id: Option[Long] = None,
+                   archived: Boolean = false,
                    firstName: String,
                    lastName: String,
                    gender: String,
                    dateOfBirth: Date,
-                   phone: Option[String],
-                   email: Option[String],
-                   address1: Option[String],
-                   postcode: Option[String])
+                   phone: Option[String] = None,
+                   email: Option[String] = None,
+                   address1: Option[String] = None,
+                   postcode: Option[String] = None)
 
 object Patients extends Table[Patient]("patient") {
    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+   def archived = column[Boolean]("archived")
    def firstName = column[String]("firstName")
    def lastName = column[String]("lastName")
    def gender = column[String]("gender")
@@ -29,7 +31,8 @@ object Patients extends Table[Patient]("patient") {
 
 
 
-   def * = id.? ~ firstName ~ lastName ~ gender ~ dateOfBirth ~ phone.? ~ email.? ~ address1.? ~ postcode.? <>(Patient, Patient.unapply _)
+   def * = id.? ~ archived ~
+     firstName ~ lastName ~ gender ~ dateOfBirth ~ phone.? ~ email.? ~ address1.? ~ postcode.? <>(Patient, Patient.unapply _)
    def autoInc = * returning id
    val byId = createFinderBy(_.id)
 
@@ -39,8 +42,13 @@ object Patients extends Table[Patient]("patient") {
    }
 
   def update(patient: Patient) = DB.withSession { implicit session =>
-    val patientToUpdate = for { c <- Patients if c.id === patient.id.get } yield c
+    val patientToUpdate = for { c <- Patients if c.id === patient.id } yield c
     patientToUpdate.update(patient)
+  }
+
+  def archive(patient: Patient) = DB.withSession { implicit session =>
+    val patientToArchive = for { c <- Patients if c.id === patient.id } yield c
+    patientToArchive.update(patient.copy(archived = true))
   }
 
    def findAll = DB.withSession { implicit session =>

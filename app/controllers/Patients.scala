@@ -40,4 +40,16 @@ object Patients extends Controller {
       e => BadRequest(JsError.toFlatJson(e))
     }
   }
+
+  def archive = Action(parse.json) { request =>
+    request.body.validate[Patient].map {
+      case patient => {
+        println("Archived")
+        models.Patients.archive(patient);
+        Ok(toJson(patient.id.get))
+      }
+    }.recoverTotal{
+      e => BadRequest(JsError.toFlatJson(e))
+    }
+  }
 }

@@ -1,0 +1,37 @@
+Appointment scheduling
+ - Calendar view
+ - SMS/Email alerts
+ - Patient check in
+ - Custom appointment types
+
+Patient management
+ - Importing of details
+ - Adding of new fields
+ - Rich media (Photos)
+ - Artifacts (X-Rays, Movies etc)
+
+Doctor and staff management
+
+Search
+ - System wide search for anything
+
+Social aspect
+ - Between doctors within practice
+ - Between other practices
+
+Invoices
+ - Custom invoices
+ - Plugin interface to develop new payment systems
+
+Analytics
+ - Ability to query DB in readonly fashion
+
+Mobile
+ - Responsive from the start
+
+ THEMES:
+  - Lightweight
+  - Online
+  - Mobile friendly
+  - Rich UI
+  - Extendable with module plugin system
