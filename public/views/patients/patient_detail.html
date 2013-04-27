@@ -47,9 +47,11 @@
 
   </div>
   <div class="col-span-3">
-     <a class="btn btn-primary pull-right" href="/app/patients/edit/{{patient.id}}">Edit patient</a>
-     <a class="btn btn-danger pull-right" ng-click="toggleArchive(true)" ng-show="!patient.archived">Archive patient</a>
-     <a class="btn btn-info pull-right" ng-click="toggleArchive(false)" ng-show="patient.archived">Unarchive patient</a>
-    <img src="http://coenraets.org/directory/pics/John_Williams.jpg"/>
+
+    <div class="btn-group">
+      <a class="btn btn-primary pull-right" ng-click="toggleArchive(true)" ng-show="!patient.archived">Archive patient</a>
+      <a class="btn btn-danger pull-right" ng-click="toggleArchive(false)" ng-show="patient.archived">Unarchive patient</a>
+      <a class="btn btn-primary pull-right" href="/app/patients/edit/{{patient.id}}">Edit patient</a>
+    </div>
   </div>
 </div>
