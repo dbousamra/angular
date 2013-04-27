@@ -2,6 +2,11 @@
   <h1>{{patient.firstName + ' ' + patient.lastName}}</h1>
 
   <p class="lead">{{patient.dateOfBirth | yearsOld}}, {{patient.gender}}</p>
+
+  <div class="alert" ng-show="patient.archived">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Warning!</strong> This patient is currently archived. To unarchive them, click the unarchive button.
+  </div>
 </div>
 
 <div class="row">
@@ -35,15 +40,15 @@
       <div data-title="History">
         <p>Some stuff2</p>
       </div>
-      <div data-title="Other">
-        <p>Some stuff3</p>
+      <div data-title="JSON">
+        <pre>{{patient | json}}</pre>
       </div>
     </div>
 
   </div>
   <div class="col-span-3">
      <a class="btn btn-primary pull-right" href="/app/patients/edit/{{patient.id}}">Edit patient</a>
-     <a class="btn btn-danger pull-right" href="/app/patients/archive/{{patient.id}}">Archive patient</a>
+     <a class="btn btn-danger pull-right" ng-click="archive(patient)">Archive patient</a>
     <img src="http://coenraets.org/directory/pics/John_Williams.jpg"/>
   </div>
 </div>
