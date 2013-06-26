@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
 import play.Project._
-import com.gu.SbtJasminePlugin._
 import sbtjslint.Plugin._
 import sbtjslint.Plugin.LintKeys._
 
@@ -24,12 +23,5 @@ object ApplicationBuild extends Build {
 ))
 
   val main = play.Project(appName, appVersion, appDependencies)
-    .settings(jasmineSettings : _*)
     .settings(localSettings : _*)
-    .settings(
-      appJsDir <+= baseDirectory / "app/assets/javascripts",
-      appJsLibDir <+= baseDirectory / "public/javascripts/lib",
-      jasmineTestDir <+= baseDirectory / "test/assets/",
-      jasmineConfFile <+= baseDirectory / "test/assets/test.dependencies.js"
-  )
 }
