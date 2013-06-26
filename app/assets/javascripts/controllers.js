@@ -27,6 +27,7 @@ function PatientEditCtrl($scope, $routeParams, $location, Patient) {
 
 function PatientAddCtrl($scope, $location, Patient) {
   $scope.save = function () {
+    $scope.patient.archived = false;
     Patient.save($scope.patient, function (data) {
       $location.path('/app/patients/' + data.id);
     }, function (error) {
