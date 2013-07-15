@@ -20,7 +20,6 @@ object Patients extends Controller {
   }
 
   def save = Action(parse.json) { request =>
-    println(request.body)
     request.body.validate[Patient].map {
       case patient => {
         val id = models.Patients.add(patient);
@@ -31,7 +30,7 @@ object Patients extends Controller {
     }
   }
 
-  def update = Action(parse.json) { request =>
+  def update(id: Long) = Action(parse.json) { request =>
     request.body.validate[Patient].map {
       case patient => {
         models.Patients.update(patient);

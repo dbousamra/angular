@@ -5,16 +5,19 @@
     "**/.*",
     "node_modules",
     "components",
-    "bower_components",
+    "bower",
     "test",
     "tests"
   ],
   "dependencies": {
-    "angular":          "latest",
+    "angular":          "https://github.com/zoomzoom83/angular.js/archive/33ece83e78cbaf13823ca832c519e7837e923dae.zip",
     "angular-mocks":    "latest",
     "angular-resource": "latest",
     "angular-scenario": "latest",
     "angular-strap":    "latest",
-    "moment":           "latest"
+    "restangular":      "latest",
+    "moment":           "latest",
+    "underscore":       "latest",
+    "lodash":           "latest"
   }
 }
